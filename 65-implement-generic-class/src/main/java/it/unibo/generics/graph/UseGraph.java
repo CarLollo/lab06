@@ -1,8 +1,11 @@
 package it.unibo.generics.graph;
 
+import it.unibo.generics.graph.api.BreadthFirst;
 import it.unibo.generics.graph.api.Graph;
+import it.unibo.generics.graph.api.GraphImpl;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -22,7 +25,13 @@ public final class UseGraph {
         /*
          * Test your graph implementation(s) by calling testGraph
          */
-        testGraph(null);
+        final List<Graph<String>> graphs = List.of(
+            new GraphImpl<>(BreadthFirst.getInstance()),
+            new GraphImpl<>(BreadthFirst.getInstance())
+        );
+        for (final var graph: graphs) {
+            testGraph(graph);
+        }
     }
 
     private static void testGraph(final Graph<String> graph) {
